@@ -886,7 +886,7 @@ public class Layer {
         List pages = getPages();
         for (int i = pages.size() - 1; i > 0; i--) {
             PageBox page = (PageBox)pages.get(i);
-            if (page.getTop() >= maxYHeight) {
+            if (page.getTop() >= maxYHeight && pages.size() > 1) {
                 if (page == getLastRequestedPage()) {
                     setLastRequestedPage(null);
                 }
