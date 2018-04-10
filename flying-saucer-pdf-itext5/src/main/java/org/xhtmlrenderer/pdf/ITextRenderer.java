@@ -303,7 +303,7 @@ public class ITextRenderer {
 //        com.itextpdf.text.Rectangle firstPageSize = new com.itextpdf.text.Rectangle(0, 0, firstPage.getWidth(c) / _dotsPerPoint,
 //                firstPage.getHeight(c) / _dotsPerPoint);
         com.itextpdf.text.Document doc = new com.itextpdf.text.Document(firstPageSize, 0, 0, 0, 0);
-        PdfWriter writer = PdfWriter.getInstance(doc, os);
+        PdfWriter writer = instantiateWriter(os, doc);
         if (_pdfVersion != null) {
             writer.setPdfVersion(_pdfVersion.charValue());
         }
@@ -324,7 +324,11 @@ public class ITextRenderer {
             doc.close();
         }
     }
-    
+
+    protected PdfWriter instantiateWriter( OutputStream os, com.itextpdf.text.Document doc ) throws DocumentException {
+        return PdfWriter.getInstance(doc, os);
+    }
+
     private int calculateWidth(RenderingContext c, PageBox firstPage) {
     	if (isScaleToFit()) {
 	    	int pageWidth = firstPage.getWidth(c);
