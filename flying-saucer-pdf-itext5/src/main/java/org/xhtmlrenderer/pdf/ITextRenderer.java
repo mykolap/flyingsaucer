@@ -127,10 +127,6 @@ public class ITextRenderer {
         _sharedContext.setInteractive(false);
     }
 
-    public com.itextpdf.text.Document getPdfDocument() {
-        return _pdfDoc;
-    }
-
     public Document getDocument() {
         return _doc;
     }
